@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-	<data>
-	    <record model="ir.ui.view" id="view_company_form">
-	        <field name="name">res.company.view.form.inherit.l10n.pe.toponyms</field>
-	        <field name="model">res.company</field>
-	        <field name="inherit_id" ref="base.view_company_form"/>
-	        <field name="arch" type="xml">
-	            <xpath expr="//field[@name='city']" position="attributes">
-	                <attribute name="invisible">1</attribute>
-	            </xpath>
-	            <xpath expr="//field[@name='zip']" position="attributes">
-	                <attribute name="invisible">1</attribute>
-	            </xpath>
-	            <xpath expr="//field[@name='state_id']" position="attributes">
-	                <attribute name="style"></attribute>
-	            </xpath>
-	            <xpath expr="//field[@name='state_id']" position="after">
-	                <field name="province_id" placeholder="Province" domain="[('state_id', '=', state_id)]" options='{"no_open": True}'/>
-	                <field name="district_id" placeholder="District" domain="[('province_id','=', province_id)]" options='{"no_open": True}'/>
-	            </xpath>
-	        </field>
-	    </record>
-	</data>
-</openerp>
+<odoo>
+
+    <record model="ir.ui.view" id="view_company_form">
+        <field name="name">res.company.view.form.inherit.l10n.pe.toponyms</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='city']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='zip']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state_id']" position="after">
+                <field name="province_id" placeholder="Province" class="o_address_state" options='{"no_open": True}' />
+                <field name="district_id" placeholder="District" class="o_address_city" options='{"no_open": True}'/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
 	<data noupdate="1">
 		<!-- Regiones -->
 		<record id="PE010000" model="res.country.state">
@@ -10480,4 +10480,4 @@
 			<field name="province_id" ref="PE250400"/>
 		</record>
 	</data>
-</openerp>
+</odoo>

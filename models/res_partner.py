@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 class Partner(models.Model):
     _inherit = 'res.partner'
@@ -13,12 +13,19 @@ class Partner(models.Model):
         if self.state_id:
             if not self.country_id:
                 self.country_id=self.state_id.country_id.id
+            return {'domain': {'province_id': [('state_id', '=', self.state_id.id)]}}
+        else:
+            return {'domain': {'province_id': []}}
+    
     
     @api.onchange('province_id')
     def _onchange_province_id(self):
         if self.province_id:
             if not self.state_id:
                 self.state_id=self.province_id.state_id.id
+            return {'domain': {'district_id': [('province_id', '=', self.province_id.id)]}}
+        else:
+            return {'domain': {'district_id': []}}
         
     @api.onchange('district_id')
     def _onchange_district_id(self):
