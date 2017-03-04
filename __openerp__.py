@@ -25,12 +25,19 @@
     "author": "Cubic ERP",
     "website": "http://cubicERP.com",
     "category": "Localization",
-    "description": " Agrega departamentos, provincias y distritos del Perú",
-    "depends": ["base", "sale"],
+    'summary': """Peruvian toponyms""",
+    'description': """
+        Peruvian toponyms
+    Lista de departamentos provincias y distritos peruanos
+    """,
+    "depends": ["base"],
     "data": [
-        'partner_view.xml',
-        'res_country_data.xml',
         'security/ir.model.access.csv',
+        'data/pe_country_data.xml',
+        'data/res_country_data.xml',
+        'views/res_country_view.xml',
+        'views/res_partner_view.xml',
+        'views/res_company_view.xml',
         ],
     'installable': True,
     'active': False,

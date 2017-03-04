@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	    <record model="ir.ui.view" id="view_partner_form">
+	        <field name="name">res.partner.view.form.inherit.l10n.pe.toponyms</field>
+	        <field name="model">res.partner</field>
+	        <field name="inherit_id" ref="base.view_partner_form"/>
+	        <field name="arch" type="xml">
+	            <xpath expr="//field[@name='city']" position="attributes">
+	                <attribute name="invisible">1</attribute>
+	            </xpath>
+	            <xpath expr="//field[@name='zip']" position="attributes">
+	                <attribute name="invisible">1</attribute>
+	            </xpath>
+	            <xpath expr="//field[@name='state_id']" position="attributes">
+	                <attribute name="style"></attribute>
+	            </xpath>
+	            <xpath expr="//field[@name='state_id']" position="after">
+	                <field name="province_id" placeholder="Province" domain="[('state_id', '=', state_id)]" options='{"no_open": True}'/>
+	                <field name="district_id" placeholder="District" domain="[('province_id','=', province_id)]" options='{"no_open": True}'/>
+	            </xpath>
+	        </field>
+	    </record>
+	</data>
+</openerp>
